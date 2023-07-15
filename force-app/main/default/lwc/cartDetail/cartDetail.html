@@ -1,0 +1,122 @@
+<template>
+    <lightning-card title="Cart Detail" icon-name="utility:cart">
+        <div class="slds-m-around_x-small">
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="12" padding="around-small" small-device-size="12" medium-device-size="9"
+                    large-device-size="9">
+                    <template if:true={isProceed}>
+                        <template if:true={totalAddress}>
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <template for:each={addresses} for:item="eachAddress">
+                                        <c-address-details key={eachAddress.Id} address={eachAddress}
+                                            onaddress={selectAddress}></c-address-details>
+                                    </template>
+                                    <lightning-button class="slds-m-top_small" variant="brand" label="Add new Address"
+                                        title="Add new Address" onclick={addNewAddress}></lightning-button>
+                                    <lightning-button class="slds-m-left_x-small" variant="brand" label="Place Order"
+                                        title="Place Order" onclick={placeOrder}></lightning-button>
+                                </div>
+                                <p class="slds-col slds-size_1-of-2">
+                                    <template if:true={selectedAddress}>
+                                        <strong>The order is delivered to this Address:</strong><br />
+                                        <lightning-formatted-address province={selectedAddress.State__c}
+                                            city={selectedAddress.City__c} street={selectedAddress.Street__c}
+                                            country={selectedAddress.Country__c}
+                                            postalcode={selectedAddress.Postal_Code__c}></lightning-formatted-address>
+                                    </template>
+                                </p>
+                            </div>
+                        </template>
+                        <template if:false={totalAddress}>
+                            <h2 class="slds-text-heading_large slds-m-bottom_small">Please enter Address Details</h2>
+                            <div class="slds-m-bottom_small">
+                                <lightning-input type="text" variant="standard" name="Street__c" label="Street"
+                                    placeholder="type here..." value={addr.Street__c}
+                                    onchange={handleAddressChange}></lightning-input>
+                                <lightning-input type="text" variant="standard" name="City__c" label="City"
+                                    placeholder="type here..." value={addr.City__c}
+                                    onchange={handleAddressChange}></lightning-input>
+                                <lightning-input type="text" variant="standard" name="State__c" label="State"
+                                    placeholder="type here..." value={addr.State__c}
+                                    onchange={handleAddressChange}></lightning-input>
+                                <lightning-input type="text" variant="standard" name="Country__c" label="Country"
+                                    placeholder="type here..." value={addr.Country__c}
+                                    onchange={handleAddressChange}></lightning-input>
+                                <lightning-input type="text" variant="standard" name="Postal_Code__c"
+                                    label="Postal Code" placeholder="type here..." value={addr.Postal_Code__c}
+                                    onchange={handleAddressChange}></lightning-input>
+                            </div>
+                            <lightning-button variant="brand" label="Add Address" title="Add Address"
+                                onclick={handleSaveAddress}></lightning-button>
+                        </template>
+                    </template>
+                    <template if:false={isProceed}>
+                        <div class="slds-m-bottom_small">
+                            <h2 class="slds-text-heading_large shopping-cart"><strong>SHOPPING CART ({totalItems}
+                                    ITEMS)</strong></h2>
+                        </div>
+                        <div class="slds-m-bottom_small slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-4"><strong>Item Name</strong></div>
+                            <div class="slds-col slds-size_1-of-4"><strong>Price</strong></div>
+                            <div class="slds-col slds-size_1-of-4"><strong>Quantity</strong></div>
+                            <div class="slds-col slds-size_1-of-4"><strong></strong></div>
+                        </div>
+                        <template if:true={items}>
+                            <template for:each={items} for:item="eachItem">
+                                <div key={eachItem.Id} class="slds-m-bottom_small">
+                                    <c-cart-item item={eachItem} ondelete={deleteItem}></c-cart-item>
+                                </div>
+                            </template>
+                        </template>
+                        <p>
+                            <lightning-button-group>
+                                <lightning-button variant="neutral" title="Continue Shopping" label="Continue Shopping"
+                                    onclick={continueShopping}></lightning-button>
+                                <lightning-button label="Proceed Checkout" title="Proceed Checkout" variant="brand"
+                                    onclick={proceedCheckout}></lightning-button>
+                            </lightning-button-group>
+                        </p>
+                    </template>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" padding="around-small" small-device-size="12" medium-device-size="3"
+                    large-device-size="3">
+                    <p class="slds-box slds-var-m-bottom_medium">
+                        <strong>Subtotal ({totalItems} Items) : </strong> ${grandTotal}
+                    </p>
+                    <p class="slds-var-m-bottom_small">
+                        <strong>Have a Coupon? </strong> <a href="Javascript.void(0)" onclick={handleCoupon}>Apply
+                            here</a>
+                    </p>
+                    <template if:true={isCoupon}>
+                        <div>
+                            <lightning-input class="slds-m-bottom_small" type="text" variant="standard" name="
+                       Apply a valid coupon" label="Apply a valid coupon" placeholder="type here..."
+                                onkeydown={handleCouponValue} onchange={handleCouponValue}
+                                onkeyup={handleCouponValue}></lightning-input>
+                            <div class="slds-m-bottom_small">
+                                <lightning-button variant="brand" label="Apply Coupon" title="Apply Coupon"
+                                    onclick={applyCoupon}></lightning-button>
+                                <div>
+                                    <template if:true={couponValue}>
+                                        coupon worth <strong><lightning-formatted-number value={couponValue}
+                                                currency-display-as="symbol" format-style="currency"
+                                                maximum-fraction-digit="2"></lightning-formatted-number></strong>
+                                        &nbsp; applied
+                                        successfully.
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    <p>
+                        <lightning-button-group>
+                            <lightning-button variant="neutral" title="Continue Shopping" label="Continue Shopping"
+                                onclick={continueShopping}></lightning-button>
+                        </lightning-button-group>
+                    </p>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </lightning-card>
+</template>

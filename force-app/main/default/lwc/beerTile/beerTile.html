@@ -1,0 +1,26 @@
+<template>
+    <template if:true={beerRecord}>
+        <lightning-card>
+            <div class="card-box">
+                <div class="beer-image-box">                  
+                </div>
+                <div class="beer-text-box">
+                    <header class="slds-text-align_center heading-box">
+                        <h2 class="beer-text-heading">{beerRecord.Name}</h2>
+                        <p class="beer-price"><span class="price-iso">$</span>&nbsp;{beerRecord.Price__c}</p>
+                    </header>
+                    <div class="beer-description">
+                        <p>Alcohol <strong>{beerRecord.Alcohol__c} &#37;</strong> </p>
+                        <p>beerId Number &nbsp;<strong>{beerRecord.Id__c}</strong></span></p>
+                        <p>Units Remaining &nbsp;<strong>{beerRecord.Remaining_Quantity__c}</strong></p>  
+                    </div>
+                    <footer class="slds-var-p-around_x-small">
+                        <lightning-button stretch variant="brand" label="Add To Cart" title="Add To Cart"
+                        onclick={handleAddToCart}></lightning-button>
+                    </footer>
+                </div>
+            </div>
+        </lightning-card>
+    </template>
+</template>
+

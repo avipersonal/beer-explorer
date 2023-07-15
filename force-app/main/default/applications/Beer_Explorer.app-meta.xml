@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>Beer Explorer</label>
+    <navType>Standard</navType>
+    <tabs>Beer_Explorer</tabs>
+    <tabs>Cart_Detail</tabs>
+    <tabs>Order_Detail</tabs>
+    <tabs>Beer__c</tabs>
+    <tabs>Coupon__c</tabs>
+    <tabs>Address_Book__c</tabs>
+    <tabs>Order__c</tabs>
+    <tabs>Order_Item__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Beer_Explorer_UtilityBar</utilityBar>
+</CustomApplication>

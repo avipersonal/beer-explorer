@@ -1,0 +1,32 @@
+<template>
+    <lightning-card>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item size="8" small-device-size="8" medium-device-size="9" large-device-size="10" padding="horizontal-medium">
+                <c-beer-search onsearch={handleSearch}></c-beer-search>
+            </lightning-layout-item>
+            <lightning-layout-item size="4" small-device-size="4" medium-device-size="3" large-device-size="2" padding="horizontal-medium">
+                <div class="cart-related">
+                    <a href="Javascript.void(0)" onclick={redirectToBeerDetail}>
+                        <div class="total-items">
+                            <strong>{itemsInCart}</strong>
+                        </div>
+                        <div title="Cart image icon and content" class="cart-icon">
+                            <img src={cartImage} alt="Cart image" class="cart-image-icon">
+                        </div>
+                    </a>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+        <div>
+            <template if:true={beerRecords}>
+                <lightning-layout multiple-rows>
+                    <template for:each={beerRecords} for:item="beerRec">
+                        <lightning-layout-item key={beerRec.Id} padding="horizontal-medium" size="12" small-device-size="6" medium-device-size="4"  large-device-size="3" >
+                            <c-beer-tile beer-record={beerRec} onadd={addToCart}></c-beer-tile>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </template>
+        </div>
+    </lightning-card>
+</template>

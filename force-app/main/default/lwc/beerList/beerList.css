@@ -1,0 +1,25 @@
+.cart-image-icon {
+  width: 70px;
+  position: absolute;
+  left: 35%;
+  top: 12px;
+  z-index: 1;
+}
+
+a {
+  color: black;
+}
+
+.cart-related {
+  position: relative;
+}
+
+.total-items {
+  font-size: 18px;
+  padding: 15px;
+  border: 2px solid red;
+  border-radius: 50%;
+  position: absolute;
+  left: 41%;
+  top: -15px;
+}

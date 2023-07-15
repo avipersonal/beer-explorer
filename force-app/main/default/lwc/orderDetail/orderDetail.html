@@ -1,0 +1,78 @@
+<template>
+    <lightning-card title="Order Detail" icon-name="custom:custom25">
+        <template if:true={order}>
+            <div class="container slds-m-around_x-small">
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item class="box" size="12" padding="around-small" small-device-size="12"
+                        medium-device-size="12" large-device-size="12">
+                        <div class="slds-grid slds-wrap slds-m-around_x-small">
+                            <p class="slds-col slds-size_1-of-4"><strong>Order Name : </strong><a
+                                    href="#">&nbsp;{order.Name}</a>
+                            </p>
+                            <p class="slds-col slds-size_1-of-4"><strong>Final Amount :
+                                </strong>&nbsp;${order.subTotal__c}
+                            </p>
+                            <p class="slds-col slds-size_1-of-4"><strong>Order Amount :
+                                </strong>&nbsp;${order.Order_Amount__c}
+                            </p>
+                            <p class="slds-col slds-size_1-of-4"><strong>Shipping Address
+                                    :</strong><br /><lightning-formatted-address
+                                    province={order.Shipping_Address__r.State__c}
+                                    city={order.Shipping_Address__r.City__c}
+                                    street={order.Shipping_Address__r.Street__c}
+                                    country={order.Shipping_Address__r.Country__c}
+                                    postalcode={order.Shipping_Address__r.Postal_Code__c}></lightning-formatted-address>
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" padding="around-small" small-device-size="12"
+                        medium-device-size="12" large-device-size="12">
+                        <h2 class="slds-m-bottom_x-small"><strong>Order Items in this order:</strong></h2>
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered"
+                            aria-labelledby="element-with-table-label other-element-with-table-label">
+                            <thead>
+                                <tr class="slds-line-height_reset">
+                                    <th class="" scope="col">
+                                        <div class="slds-truncate" title="Item Name">Item Name</div>
+                                    </th>
+                                    <th class="" scope="col">
+                                        <div class="slds-truncate" title="Quantity">Quantity</div>
+                                    </th>
+                                    <th class="" scope="col">
+                                        <div class="slds-truncate" title="Beer Name">Beer Name</div>
+                                    </th>
+                                    <th class="" scope="col">
+                                        <div class="slds-truncate" title="Item Amount">Item Amount</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={orderItems} for:item="orderItem">
+                                    <tr class="slds-hint-parent" key={orderItem.Id}>
+                                        <th data-label={orderItem.Name} scope="row">
+                                            <div class="slds-truncate" title={orderItem.Name}>
+                                                <a href="#" tabindex="-1">{orderItem.Name}</a>
+                                            </div>
+                                        </th>
+                                        <td data-label={orderItem.Ordered_Quantity__c}>
+                                            <div class="slds-truncate" title={orderItem.Ordered_Quantity__c}>
+                                                {orderItem.Ordered_Quantity__c}</div>
+                                        </td>
+                                        <td data-label={orderItem.Beer__r.Name}>
+                                            <div class="slds-truncate" title={orderItem.Beer__r.Name}><a href="#">
+                                                    {orderItem.Beer__r.Name}</a></div>
+                                        </td>
+                                        <td data-label={orderItem.Item_Price__c}>
+                                            <div class="slds-truncate" title={orderItem.Item_Price__c}>
+                                                ${orderItem.Item_Price__c}</div>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </template>
+    </lightning-card>
+</template>

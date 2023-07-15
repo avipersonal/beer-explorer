@@ -1,0 +1,54 @@
+.card-box {
+  border-radius: 11px;
+  overflow: hidden;
+  box-shadow: 0 0 16px 0 rgb(0 0 0 / 10%);
+}
+
+.beer-image-box {
+  background-image: url('/resource/beerImage');
+  background-position: center;
+  background-size: cover;
+  height: 300px;
+}
+
+.heading-box {
+  margin-bottom: 24px;
+}
+
+.beer-text-box {
+  padding: 12px;
+}
+
+.beer-text-heading {
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 500;
+  color: #555;
+}
+
+.price-iso {
+  font-size: 32px;
+}
+
+.beer-price {
+  font-size: 48px;
+  color: #333;
+  font-weight: 600;
+}
+
+.beer-description {
+  margin: 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 18px;
+}
+
+footer {
+  margin-top: 32px;
+}
+
+strong {
+  font-weight: 500;
+}
+

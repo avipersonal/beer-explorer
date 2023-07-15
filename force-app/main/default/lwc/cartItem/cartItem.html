@@ -1,0 +1,15 @@
+<template>
+    <template if:true={item}>
+        <div class="slds-grid slds-wrap">
+            <p class="slds-col slds-size_1-of-4"><a href="#">{item.Beer__r.Name}</a></p>
+            <p class="slds-col slds-size_1-of-4"><lightning-formatted-number value={item.Item_Amount__c}
+                    currency-code="USD" format-style="currency" currency-display-as="symbol"
+                    maximum-fraction-digits="2"></lightning-formatted-number></p>
+            <p class="slds-col slds-size_1-of-4"><lightning-input type="number" variant="label-hidden" name="Quantity"
+                    value={item.Item_Quantity__c} min="1"></lightning-input></p>
+            <p class="slds-col slds-size_1-of-4"><lightning-button class="slds-align_absolute-center"
+                    variant="destructive" label="Delete" icon-name="utility:delete" title="Remove Cart Item"
+                    onclick={deleteCartItem}></lightning-button></p>
+        </div>
+    </template>
+</template>
