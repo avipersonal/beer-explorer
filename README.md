@@ -1,18 +1,20 @@
-# Salesforce DX Project: Next Steps
+# Beer Explorer
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+This application is used to track the complete sale cycle of the beer, from its availability in stock to its order creation. 
 
-## How Do You Plan to Deploy Your Changes?
+## Key Features
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+- **Fast Cart Creation**: A custom user interface component for adding different beers to the cart quickly and effortlessly, resulting in a reduction in time.
+- **Visually pleasing and User-friendly Cart Display**: User-friendly and intuitive cart component to show the cart information.
+- **Coupon functionality**: Can apply coupons to carts to give discounts to customers.
+- **Simple and comprehensive Order display**: Order display component to summarize and show the order details.
+- **Assign existing address or create a new one**: Can assign an existing address to the cart or create a new address through the custom component during the cart-to-order generation process.     
+  
+## Screenshots
 
-## Configure Your Salesforce DX Project
+![Beer App Page](/App-images/Beer_display_app_page.png)
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+![Cart Display Page](/App-images/Cart_display_page.png)
 
-## Read All About It
+![Order Display Page](/App-images/Order_display_page.png)
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
